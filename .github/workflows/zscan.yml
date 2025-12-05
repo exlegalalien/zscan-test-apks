@@ -40,7 +40,7 @@ jobs:
         uses: actions/checkout@v3
       
       - name: Run Zimperium zScan
-        uses: zimperium/zscanmarketplace@21542bce0d93bca401ea5ef5341f783465462caa
+        uses: zimperium/zscanmarketplace@8cd7224ccf6b749aad7e07366de9a58cfeb4abe0
         timeout-minutes: 35
         with:
 
