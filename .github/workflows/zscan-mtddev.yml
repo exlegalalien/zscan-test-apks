@@ -15,7 +15,7 @@
 # For additional information and setup instructions
 # please visit:  https://github.com/Zimperium/zScanMarketplace#readme
 
-name: "Zimperium zScan"
+name: "mtddev zScan"
 
 on:
   workflow_dispatch:
