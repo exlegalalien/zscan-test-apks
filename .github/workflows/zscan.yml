@@ -40,12 +40,12 @@ jobs:
         uses: actions/checkout@v3
       
       - name: Run Zimperium zScan
-        uses: zimperium/zscanmarketplace@b8378a4eaba374e86aff13e14082e18bdc88c2e8
+        uses: zimperium/zscanmarketplace@2d85b5bf8edb3f8bc9c1c298cdfe04dc0fd504ed
         timeout-minutes: 35
         with:
 
         # REPLACE: Zimperium Client Environment Name
-          console_url: https://zc202.zimperium.com
+          console_url: https://zc202.zimperium.com/
         # REPLACE: Zimperium Client ID
           client_id: ${{ vars.ZSCAN_CLIENT_ID }}
         # REPLACE: Zimperium Client Secret
