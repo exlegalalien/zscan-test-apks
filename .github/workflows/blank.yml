@@ -1,0 +1,66 @@
+# This is a basic workflow to help you get started with Actions
+
+name: CI zShieldPro
+
+# Controls when the workflow will run
+on:
+  # Triggers the workflow on push or pull request events but only for the "main" branch
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  protect-ios:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Protect iOS app
+        id: zshield
+        uses: Zimperium/zshield-pro-plugin-github@v0.1.0
+        with:
+          console_url: https://ziap.zimperium.com
+          client_id: ${{ vars.Z_CLIENT_ID }}
+          client_secret: ${{ secrets.Z_CLIENT_SECRET }}
+          app_file: DVIA-v2.ipa
+          team_name: Apps
+          group_name: Default Group
+          app_protection_request: |
+            {
+              "description": "CI iOS protection",
+              "runtimeProtection": true,
+              "autoScanBuild": true
+            }
+
+  protect-android:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Protect Android app
+        id: zshield
+        uses: Zimperium/zshield-pro-plugin-github@v0.1.0
+        with:
+          console_url: https://ziap.zimperium.com
+          client_id: ${{ vars.Z_CLIENT_ID }}
+          client_secret: ${{ secrets.Z_CLIENT_SECRET }}
+          app_file: zFear-client-v7.apk
+          team_name: Apps
+          group_name: Default Group
+          app_protection_request: |
+            {
+              "description": "CI iOS protection",
+              "runtimeProtection": true,
+              "autoScanBuild": true
+            }
+
+      - name: Upload protected artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: protected-android
+          path: ${{ steps.zshield.outputs.protected_file }}
