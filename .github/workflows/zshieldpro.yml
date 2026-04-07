@@ -27,7 +27,7 @@ jobs:
           console_url: https://ziap.zimperium.com
           client_id: ${{ vars.Z_CLIENT_ID }}
           client_secret: ${{ secrets.Z_CLIENT_SECRET }}
-          app_file: DVIA-v2.ipa
+          app_file: FlappyBird.xcarchive.zip
           team_name: Apps
           group_name: Default Group
           app_protection_request: |
@@ -46,7 +46,7 @@ jobs:
         id: zshield
         uses: Zimperium/zshield-pro-plugin-github@v0.1.0
         with:
-          console_url: https://ziap.zimperium.com
+          console_url: https://zc202.zimperium.com
           client_id: ${{ vars.Z_CLIENT_ID }}
           client_secret: ${{ secrets.Z_CLIENT_SECRET }}
           app_file: zFear-client-v7.apk
