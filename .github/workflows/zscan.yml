@@ -39,19 +39,29 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
       
-      - name: Run Zimperium zScan
-        uses: zimperium/zscanmarketplace@f2daed85a1ef9a5934f76cc1387db5fdb286eb42
+      - name: Run Zimperium zScan for zFear Client
+        uses: zimperium/zscanmarketplace@bc678579b4c5a6c958ae5241f459e4942b5733dc
         timeout-minutes: 35
         with:
+          console_url: https://mtddev.zimperium.com
+          client_id: ${{ vars.ZSCAN_CLIENT_ID_MTDDEV }}
+          client_secret: ${{ secrets.ZSCAN_CLIENT_SECRET_MTDDEV }}
+          app_file: "zFear-client-v7.apk"
+          team_name: "Test"
+          report_format: pdf
+          fail_on_scan_findings: true
+          scan_evaluation_mode: unaccepted_finding_only
+          minimum_severity: high
 
-        # REPLACE: Zimperium Client Environment Name
-          console_url: https://zc202.zimperium.com/
-        # REPLACE: Zimperium Client ID
-          client_id: ${{ vars.ZSCAN_CLIENT_ID }}
-        # REPLACE: Zimperium Client Secret
-          client_secret: ${{ secrets.ZSCAN_CLIENT_SECRET }}
-        # REPLACE: The path to an .ipa or .apk
-          app_file: "*.apk"
+      - name: Run Zimperium zScan for InsecuteBankv2
+        uses: zimperium/zscanmarketplace@bc678579b4c5a6c958ae5241f459e4942b5733dc
+        timeout-minutes: 35
+        with:
+          console_url: https://mtddev.zimperium.com
+          client_id: ${{ vars.ZSCAN_CLIENT_ID_MTDDEV }}
+          client_secret: ${{ secrets.ZSCAN_CLIENT_SECRET_MTDDEV }}
+          app_file: "InsecuteBankv2.apk"
+          team_name: "Test"
 
       - name: Upload SARIF file
         uses: github/codeql-action/upload-sarif@v4
