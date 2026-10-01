@@ -71,7 +71,7 @@ jobs:
           console_url: https://mtddev.zimperium.com
           client_id: ${{ vars.ZSCAN_CLIENT_ID_MTDDEV }}
           client_secret: ${{ secrets.ZSCAN_CLIENT_SECRET_MTDDEV }}
-          app_file: "InsecuteBankv2.apk"
+          app_file: "InsecureBankv2.apk"
           team_name: "Test"
           report_format: "sarif"
           fail_on_scan_findings: true
