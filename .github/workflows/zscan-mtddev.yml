@@ -51,7 +51,18 @@ jobs:
           report_format: pdf
           fail_on_scan_findings: true
           scan_evaluation_mode: unaccepted_finding_only
-          minimum_severity: high
+          minimum_severity: critical
+
+      - name: Run Zimperium zScan for DVIA_v2
+        uses: zimperium/zscanmarketplace@689d9f9a5ab0bbc291f3f9a903483458a36b8fbc
+        timeout-minutes: 35
+        with:
+          console_url: https://mtddev.zimperium.com
+          client_id: ${{ vars.ZSCAN_CLIENT_ID_MTDDEV }}
+          client_secret: ${{ secrets.ZSCAN_CLIENT_SECRET_MTDDEV }}
+          app_file: "DVIA-v2.ipa"
+          team_name: "Test"
+          report_format: "json"
 
       - name: Run Zimperium zScan for InsecuteBankv2
         uses: zimperium/zscanmarketplace@689d9f9a5ab0bbc291f3f9a903483458a36b8fbc
@@ -62,6 +73,10 @@ jobs:
           client_secret: ${{ secrets.ZSCAN_CLIENT_SECRET_MTDDEV }}
           app_file: "InsecuteBankv2.apk"
           team_name: "Test"
+          report_format: "sarif"
+          fail_on_scan_findings: true
+          scan_evaluation_mode: unaccepted_finding_only
+          minimum_severity: high
 
       - name: Upload SARIF file
         uses: github/codeql-action/upload-sarif@v4
