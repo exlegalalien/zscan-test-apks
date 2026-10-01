@@ -40,7 +40,7 @@ jobs:
         uses: actions/checkout@v4
       
       - name: Run Zimperium zScan for zFear Client
-        uses: zimperium/zscanmarketplace@bc678579b4c5a6c958ae5241f459e4942b5733dc
+        uses: zimperium/zscanmarketplace@689d9f9a5ab0bbc291f3f9a903483458a36b8fbc
         timeout-minutes: 35
         with:
           console_url: https://mtddev.zimperium.com
@@ -54,7 +54,7 @@ jobs:
           minimum_severity: high
 
       - name: Run Zimperium zScan for InsecuteBankv2
-        uses: zimperium/zscanmarketplace@bc678579b4c5a6c958ae5241f459e4942b5733dc
+        uses: zimperium/zscanmarketplace@689d9f9a5ab0bbc291f3f9a903483458a36b8fbc
         timeout-minutes: 35
         with:
           console_url: https://mtddev.zimperium.com
